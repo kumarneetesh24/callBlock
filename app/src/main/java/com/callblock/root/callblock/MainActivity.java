@@ -2,12 +2,15 @@ package com.callblock.root.callblock;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.internal.telephony.ITelephony;
@@ -16,11 +19,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class MainActivity extends Activity {
+
     DBhelper myDB;
+    private static Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        OnClickButtonListen();
         myDB= new DBhelper(this);
         TelephonyManager telephonyManager= (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         telephonyManager.listen(phoneStateListener,PhoneStateListener.LISTEN_CALL_STATE);
@@ -66,6 +72,18 @@ public class MainActivity extends Activity {
     };
 
 
+    public void OnClickButtonListen(){
+        button=(Button)findViewById(R.id.button);
+        button.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent= new Intent("com.callblock.root.callblock.Numins");
+                        startActivity(intent);
+                    }
+                }
+        );
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

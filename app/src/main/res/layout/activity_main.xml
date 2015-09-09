@@ -8,4 +8,13 @@
     <TextView android:text="" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add numbers"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="144dp" />
+
 </RelativeLayout>
